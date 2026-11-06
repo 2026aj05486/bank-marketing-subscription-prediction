@@ -50,4 +50,4 @@ streamlit run app.py
 - `app.py` — Streamlit deployment entry point
 - `requirements.txt` — pinned Python dependencies
 - `README.md` — project documentation and baseline results
-- `project_bundle.zip` — saved app source and trained artifacts (must be uploaded)
+- `project_bundle.zip` — saved app source and trained artifacts 
