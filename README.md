@@ -2,10 +2,6 @@
 
 A Streamlit application for evaluating five saved machine-learning classifiers on the UCI Bank Marketing dataset.
 
-## Repository
-
-https://github.com/2026aj05486/bank-marketing-subscription-prediction
-
 ## Dataset and preparation
 
 - Dataset: UCI Bank Marketing (`bank-full.csv`), 45,211 records.
@@ -29,9 +25,11 @@ https://github.com/2026aj05486/bank-marketing-subscription-prediction
 
 Gaussian Naive Bayes has the highest recall, F1 and MCC in the baseline comparison. Logistic Regression has the highest accuracy, AUC and precision. Accuracy should be interpreted with care because the target is imbalanced.
 
-## Application
+## Application and required model files
 
-The app evaluates saved models; it does not retrain them. It provides model selection, CSV upload, accuracy, AUC, precision, recall, F1, MCC, a confusion matrix and a classification report. Uploaded CSVs must contain the 15 model input features and target column `y`.
+The root `app.py` is the Streamlit deployment entry point. It expects `project_bundle.zip` in the repository root. This archive contains the application source, fitted preprocessor, metadata, five saved models, and held-out test CSV. The entry point extracts the archive on first launch and runs the bundled Streamlit app. The app evaluates saved models; it does not retrain them.
+
+The uploaded CSV must contain the 15 model input features and target column `y`. The app provides model selection, CSV upload, accuracy, AUC, precision, recall, F1, MCC, a confusion matrix and a classification report.
 
 ## Run locally
 
@@ -42,8 +40,14 @@ streamlit run app.py
 
 ## Deploy on Streamlit Community Cloud
 
-1. Open https://share.streamlit.io/ and sign in with GitHub.
-2. Select this repository, branch `main`, and main file `app.py`.
-3. Click Deploy.
+1. Upload `project_bundle.zip` to the root of this GitHub repository.
+2. Open https://share.streamlit.io/ and sign in with GitHub.
+3. Select this repository, branch `main`, and main file `app.py`.
+4. Click Deploy.
 
-The saved model artifacts are packaged in `project_bundle.zip`. The root `app.py` extracts the bundle at startup and runs the application code included in it.
+## Repository files
+
+- `app.py` — Streamlit deployment entry point
+- `requirements.txt` — pinned Python dependencies
+- `README.md` — project documentation and baseline results
+- `project_bundle.zip` — saved app source and trained artifacts (must be uploaded)
